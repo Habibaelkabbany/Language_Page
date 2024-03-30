@@ -13,7 +13,7 @@
     />
     <style>
       body {
-        background-color: #E2D1F9;
+        background-color: #e2d1f9;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -42,16 +42,16 @@
         border-radius: 50%;
         background-color: wheat;
         border-color: wheat;
-        color:black;
+        color: black;
       }
-      .btn:hover{
+      .btn:hover {
         background-color: black;
         border-color: black;
       }
-      @media only screen and (max-width: 500px){
-        .center-content{
-            width:fit-content;
-            padding: 30px;
+      @media only screen and (max-width: 500px) {
+        .center-content {
+          width: fit-content;
+          padding: 30px;
         }
       }
     </style>
@@ -60,16 +60,18 @@
     <div class="center-content">
       <h1>Choose Your Preferred Language</h1>
       <h1>اختار لغتك المفضلة</h1>
-      <a
-        href="Aloe vera (English)-NF.pdf"
-        class="btn btn-primary text-nowrap"
+      <a href="Aloe vera (English)-NF.pdf" class="btn btn-primary text-nowrap"
         >English</a
       >
-      <a
-        href="Aloe vera (Arabic)-NF.pdf"
-        class="btn btn-primary"
-        >العربية</a
+      <a href="Aloe vera (Arabic)-NF.pdf" class="btn btn-primary">العربية</a>
+    </div>
+    <div class="center-content">
+      <h1>Choose Your Preferred Language</h1>
+      <h1>اختار لغتك المفضلة</h1>
+      <a  id="pdfEnglish" href="Aloe vera (English)-NF.pdf" class="btn btn-primary text-nowrap"
+        >English</a
       >
+      <a id="pdfArabic" href="Aloe vera (Arabic)-NF.pdf" class="btn btn-primary">العربية</a>
     </div>
 
     <script
@@ -77,8 +79,29 @@
       integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
       crossorigin="anonymous"
     ></script>
-   <script>
-document.write(5 + 6);
-</script>
+    <script>
+      const queryStrings = window.location.search;
+      const urlParms = new URLSearchParams(queryStrings);
+      const plant = urlParams.get('parameter');
+      const pdfEnglish= document.getElementById('pdfEnglish');
+      const pdfArabic= document.getElementById('pdfArabic');
+      console.log(plant);
+      switch (plant) {
+        case 'Aloe':
+          pdfEnglish.href = 'Aloe vera (English)-NF.pdf';
+          pdfArabic.href = 'Aloe vera (Arabic)-NF.pdf';
+          break;
+        case 'chamomile':
+          pdfEnglish.href = 'Chamomile (English).pdf';
+          pdfArabic.href = 'Chamomile (Arabic).pdf';
+          break;
+        // Add more cases as needed for different plant values
+        default:
+          // Default behavior if 'parameter' value doesn't match any case
+          // You can choose to do nothing or set default PDF links here
+          break;
+      }
+
+    </script>
   </body>
 </html>
